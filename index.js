@@ -77,11 +77,12 @@ class Stock {
 		table.appendChild(thead);
 		for(const i in data) {
 			tr = makeElement('tr');
+			const td = makeElement('td', data[i][0] + crop[i].unit * (data[i][1] + data[i][2]));
 			tr.appendChild(makeElement('td', crop[i].name, {className: 'br'}));
 			tr.appendChild(makeElement('td', data[i][0], {contentEditable: true}, {input: function() { changeStock(n, i, 0, this, td); }, focus: function() { initStock(this); }, blur: function() { setStock(this); }}));
 			tr.appendChild(makeElement('td', data[i][1], {contentEditable: true}, {input: function() { changeStock(n, i, 1, this, td); }, focus: function() { initStock(this); }, blur: function() { setStock(this); }}));
 			tr.appendChild(makeElement('td', data[i][2], {contentEditable: true}, {input: function() { changeStock(n, i, 2, this, td); }, focus: function() { initStock(this); }, blur: function() { setStock(this); }}));
-			tr.appendChild(makeElement('td', data[i][0] + crop[i].unit * (data[i][1] + data[i][2])));
+			tr.appendChild(td);
 			tbody.appendChild(tr);
 		}
 		table.appendChild(tbody);
